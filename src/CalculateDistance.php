@@ -51,6 +51,7 @@ class CalculateDistance {
 
     /**
      * @param string $destination
+     * @return $this
      */
     public function setDestination($destination)
     {
@@ -167,7 +168,7 @@ class CalculateDistance {
         $route = $this->calculateDistance();
         if( is_null($route) === FALSE) {
             if(isset($route->distance->value)){
-                return round($route->distance->value/1000,2);
+                return round($route->distance->value/1000);
             } else {
                 return -1;
             }
