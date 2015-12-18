@@ -50,6 +50,15 @@ class CalculateDistance {
     }
 
     /**
+     * @param string $destination
+     */
+    public function setDestination($destination)
+    {
+        $this->destination = $destination;
+        return $this;
+    }
+
+    /**
      * @param $source
      * @return $this
      */
