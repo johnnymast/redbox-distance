@@ -1,4 +1,4 @@
-# CalculateDistance
+# Redbox-distance
 
 This set of classes allow you to calculate the distance between 2 Geo Locations or zipcodes. This information comes from the Google Maps API.
 

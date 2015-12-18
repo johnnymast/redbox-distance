@@ -1,5 +1,5 @@
 <?php
-namespace DistanceTools;
+namespace Redbox\Distance;
 
 /**
  *
