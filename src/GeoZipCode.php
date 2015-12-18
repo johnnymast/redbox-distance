@@ -1,21 +1,18 @@
 <?php
 namespace Redbox\Distance;
 
-/**
- *
- * @package   CalculateDistance
- * @author    Johnny Mast <mastjohnny@gmail.com>
- * @license   https://github.com/johnnymast/CalculateDistance/blob/master/LICENSE.txt MIT
- * @link      https://github.com/johnnymast/CalculateDistance
- */
 class GeoZipCode {
-    protected $_zipcode;
+
+    /**
+     * @var string
+     */
+    protected $zipcode;
 
     /**
      * @param string $zipcode
      */
     public function __construct($zipcode="") {
-        $this->_zipcode  = $zipcode;
+        $this->zipcode  = $zipcode;
     }
 
     /**
@@ -23,6 +20,6 @@ class GeoZipCode {
      * @return string
      */
     public function __toString() {
-        return $this->_zipcode;
+        return $this->zipcode;
     }
 }

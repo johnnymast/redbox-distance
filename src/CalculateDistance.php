@@ -14,17 +14,14 @@ class CalculateDistance {
     const KM_TO_MILES_CONVERTER       = 0.62137;
     const KM_TO_YARD_CONVERTER        = 1093.6133;
     const CURRENT_VERSION             = '1.0';
-    protected $_source                = '';
-    protected $_destination           = '';
-    protected $_googleAPIkey          = '';
-    protected $_urlOptions            = [];
-    protected $_disable_ssl_verifier  = true;
+    protected $source                = '';
+    protected $destination           = '';
+    protected $googleAPIkey          = '';
+    protected $urlOptions            = [];
+    protected $disable_ssl_verifier  = true;
 
-    /**
-     * Construct the class and setup the basic options
-     */
     public function __construct() {
-        $this->_urlOptions = array(
+        $this->urlOptions = array(
             'origins'       => '',
             'destinations'  => '',
             'mode'          => 'driving',
@@ -34,100 +31,55 @@ class CalculateDistance {
         );
     }
 
-    /**
-     * Set if we are going to use ssl verifier or not
-     * @param string $googleAPIkey as the google API key
-     * @return self
-     */
     public function setGoogleAPIkey($googleAPIkey)
     {
-        $this->_googleAPIkey = $googleAPIkey;
+        $this->googleAPIkey = $googleAPIkey;
         return $this;
     }
 
-    /**
-     * Set if we are going to use ssl verifier or not
-     * @param boolean $disable_ssl_verifier
-     * @return self
-     */
     public function setUseSslVerifier($disable_ssl_verifier)
     {
-        $this->_disable_ssl_verifier = $disable_ssl_verifier;
+        $this->disable_ssl_verifier = $disable_ssl_verifier;
         return $this;
     }
 
-    /**
-     * Set the source
-     * @param mixed GeoZipCode|GeoPoint
-     * @return self
-     */
     public function setSource($source)
     {
-        $this->_source = $source;
+        $this->source = $source;
         return $this;
     }
 
-    /**
-     * Set the destination
-     * @param mixed GeoZipCode|GeoPoint
-     * @return self
-     */
     public function setDestination($destination)
     {
-        $this->_destination = $destination;
+        $this->destination = $destination;
         return $this;
     }
 
-    /**
-     * Get the destination
-     * @return mixed GeoZipCode|GeoPoint
-     */
     public function getDestination()
     {
-        return $this->_destination;
+        return $this->destination;
     }
 
-    /**
-     * returns the GoogleMaps API key if its set.
-     * @return string
-     */
     private function getGoogleAPIkey()
     {
-        return $this->_googleAPIkey;
+        return $this->googleAPIkey;
     }
 
-    /**
-     * Private method so we know if we use the ssl verifier option
-     * @return boolean
-     */
     private function useSslVerifier()
     {
-        return $this->_disable_ssl_verifier;
+        return $this->disable_ssl_verifier;
     }
 
-    /**
-     * returns the source GeoPoint|GeoZipCode
-     * @return mixed GeoPoint|GeoZipCode
-     */
     public function getSource()
     {
-        return $this->_source;
+        return $this->source;
     }
 
-    /**
-     * Returns the urloptions
-     * @return array
-     */
     public function getUrlOptions()
     {
-        return $this->_urlOptions;
+        return $this->urlOptions;
     }
 
-    /**
-     * Execute the request
-     * @param string $url
-     * @return mixed
-     */
     private function requestData($url="") {
         $curl = curl_init();
         curl_setopt_array($curl, array(
@@ -140,10 +92,6 @@ class CalculateDistance {
         return $resp;
     }
 
-    /**
-     * Do the the actual request to Google Maps.
-     * @return mixed|null
-     */
     private function calculateDistance() {
 
         $data = $this->getUrlOptions();
@@ -177,10 +125,6 @@ class CalculateDistance {
         return NULL;
     }
 
-    /**
-     * Returns the distance in KM
-     * @return float|int
-     */
     public function getDistanceInKM() {
         $route = $this->calculateDistance();
         if( is_null($route) === FALSE) {
@@ -196,18 +140,12 @@ class CalculateDistance {
         }
     }
 
-    /**
-     * Returns the distance in Miles
-     * @return float|int
-     */
+
     public function getDistanceInMiles() {
         return $this->convertResult(self::KM_TO_MILES_CONVERTER);
     }
 
-    /**
-     * Returns the distance in Yards
-     * @return float|int
-     */
+
     public function getDistanceInYards() {
         return $this->convertResult(self::KM_TO_YARD_CONVERTER);
     }

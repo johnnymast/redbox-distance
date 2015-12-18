@@ -1,43 +1,43 @@
 <?php
 namespace Redbox\Distance;
 
-/**
- *
- * @package   CalculateDistance
- * @author    Johnny Mast <mastjohnny@gmail.com>
- * @license   https://github.com/johnnymast/CalculateDistance/blob/master/LICENSE.txt MIT
- * @link      https://github.com/johnnymast/CalculateDistance
- */
 class GeoPoint {
-    protected $_lat;
-    protected $_long;
+    /**
+     * @var string
+     */
+    protected $lat;
 
     /**
-     * Return the latitued
+     * @var string
+     */
+    protected $long;
+
+    /**
+     * Return the latitude
      * @return mixed
      */
     public function getLat()
     {
-        return $this->_lat;
+        return $this->lat;
     }
 
     /**
-     * Return the longtitude
+     * Return the longitude
      * @return mixed
      */
     public function getLong()
     {
-        return $this->_long;
+        return $this->long;
     }
 
     /**
-     * Constuctor of the class taking the lat and long
+     * Constructor of the class taking the lat and long
      * @param string $lat
      * @param string $long
      */
     public function __construct($lat="", $long="") {
-        $this->_lat  = $lat;
-        $this->_long = $long;
+        $this->lat  = $lat;
+        $this->long = $long;
     }
 
     /**
@@ -45,6 +45,6 @@ class GeoPoint {
      * @return string
      */
     public function __toString() {
-        return $this->_lat.','.$this->_long;
+        return $this->lat.','.$this->long;
     }
 }
