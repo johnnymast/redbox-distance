@@ -18,12 +18,7 @@ This set of classes allow you to calculate the distance between 2 Geo Locations 
 Use the following command to install this package with composer
 [Composer](http://getcomposer.org).
 
-```bash
-# Install Composer
-curl -sS https://getcomposer.org/installer | php
-```
-
-Next, run the Composer command to install the latest stable version of CalculateDistance:
+Run the Composer command to install the latest stable version of CalculateDistance:
 
 ```bash
 composer.phar require johnnymast/calculate-distance
@@ -34,10 +29,6 @@ After installing, you need to require Composer's autoloader:
 ```php
 require 'vendor/autoload.php';
 ```
-
-### Install without composer
-
-You can manualy download this package from github then include includes/config.php.
 
 
 ### System Requirements
@@ -88,7 +79,6 @@ and
 
 
 
-
 ## Troubleshooting
 
 If you get an error regarding SSL connectivity you might want to disable verify peer (CURLOPT_SSL_VERIFYPEER). The calculateDistance class offers
@@ -107,11 +97,11 @@ Sometimes the postalcode feature could return wrong results. To battle this also
 
 ## Author
 
-CalculateDistance is created and maintained by [Johnny Mast](mastjohnny@gmail.com). For feature requests and suggestions
+Redbox-distance is created and maintained by [Johnny Mast](mastjohnny@gmail.com). For feature requests and suggestions
 you could consider sending me an e-mail.
 
 ## License
 
-CalculateDistance is released under the MIT public license.
+Redbox-distance is released under the MIT public license.
 
 <https://github.com/johnnymast/redbox-distance/blob/master/LICENSE>

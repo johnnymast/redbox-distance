@@ -1,13 +1,6 @@
 <?php
 namespace Redbox\Distance;
 
-/**
- *
- * @package   CalculateDistance
- * @author    Johnny Mast <mastjohnny@gmail.com>
- * @license   https://github.com/johnnymast/CalculateDistance/blob/master/LICENSE.txt MIT
- * @link      https://github.com/johnnymast/CalculateDistance
- */
 class CalculateDistance {
 
     const MAPS_DISTANCE_MATRIX_API_URL = 'https://maps.googleapis.com/maps/api/distancematrix/json';
@@ -20,6 +13,9 @@ class CalculateDistance {
     protected $urlOptions            = [];
     protected $disable_ssl_verifier  = true;
 
+    /**
+     * CalculateDistance constructor.
+     */
     public function __construct() {
         $this->urlOptions = array(
             'origins'       => '',
@@ -31,55 +27,90 @@ class CalculateDistance {
         );
     }
 
+    /**
+     * @param $googleAPIkey
+     * @return $this
+     */
     public function setGoogleAPIkey($googleAPIkey)
     {
         $this->googleAPIkey = $googleAPIkey;
         return $this;
     }
 
+    /**
+     * @param $disable_ssl_verifier
+     * @return $this
+     */
     public function setUseSslVerifier($disable_ssl_verifier)
     {
         $this->disable_ssl_verifier = $disable_ssl_verifier;
         return $this;
     }
 
+    /**
+     * @param $source
+     * @return $this
+     */
     public function setSource($source)
     {
         $this->source = $source;
         return $this;
     }
 
+    /**
+     * @param $destination
+     * @return $this
+     */
     public function setDestination($destination)
     {
         $this->destination = $destination;
         return $this;
     }
 
+    /**
+     * @return string
+     */
     public function getDestination()
     {
         return $this->destination;
     }
 
+    /**
+     * @return string
+     */
     private function getGoogleAPIkey()
     {
         return $this->googleAPIkey;
     }
 
+    /**
+     * @return bool
+     */
     private function useSslVerifier()
     {
         return $this->disable_ssl_verifier;
     }
 
+    /**
+     * @return string
+     */
     public function getSource()
     {
         return $this->source;
     }
 
+    /**
+     * @return array
+     */
     public function getUrlOptions()
     {
         return $this->urlOptions;
     }
 
+    /**
+     * @param string $url
+     * @return mixed
+     */
     private function requestData($url="") {
         $curl = curl_init();
         curl_setopt_array($curl, array(
@@ -92,6 +123,9 @@ class CalculateDistance {
         return $resp;
     }
 
+    /**
+     * @return mixed|null
+     */
     private function calculateDistance() {
 
         $data = $this->getUrlOptions();
@@ -125,6 +159,9 @@ class CalculateDistance {
         return NULL;
     }
 
+    /**
+     * @return float|int
+     */
     public function getDistanceInKM() {
         $route = $this->calculateDistance();
         if( is_null($route) === FALSE) {
@@ -140,16 +177,25 @@ class CalculateDistance {
         }
     }
 
-
+    /**
+     * @return float|int
+     */
     public function getDistanceInMiles() {
         return $this->convertResult(self::KM_TO_MILES_CONVERTER);
     }
 
 
+    /**
+     * @return float|int
+     */
     public function getDistanceInYards() {
         return $this->convertResult(self::KM_TO_YARD_CONVERTER);
     }
 
+    /**
+     * @param $type
+     * @return float|int
+     */
     protected function convertResult($type) {
         $result = $this->getDistanceInKM();
         if ($result > -1) {
