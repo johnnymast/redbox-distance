@@ -17,7 +17,7 @@ class CalculateDistance {
     protected $_source                = '';
     protected $_destination           = '';
     protected $_googleAPIkey          = '';
-    protected $_urlOptions            = '';
+    protected $_urlOptions            = [];
     protected $_disable_ssl_verifier  = true;
 
     /**
@@ -169,7 +169,7 @@ class CalculateDistance {
 
         if ($route) {
             $rows = current($route->rows);
-            if (is_null($rows) == false) {
+            if (is_null($rows) === false) {
                 $elements = current($rows->elements);
                 return $elements;
             }
@@ -183,7 +183,7 @@ class CalculateDistance {
      */
     public function getDistanceInKM() {
         $route = $this->calculateDistance();
-        if( is_null($route) == FALSE) {
+        if( is_null($route) === FALSE) {
             if(isset($route->distance->value)){
                 return round($route->distance->value/1000,2);
             }
@@ -201,11 +201,7 @@ class CalculateDistance {
      * @return float|int
      */
     public function getDistanceInMiles() {
-        $result = $this->getDistanceInKM();
-        if ($result > -1) {
-            return ($result * self::KM_TO_MILES_CONVERTER);
-        }
-        return $result;
+        return $this->convertResult(self::KM_TO_MILES_CONVERTER);
     }
 
     /**
@@ -213,12 +209,14 @@ class CalculateDistance {
      * @return float|int
      */
     public function getDistanceInYards() {
+        return $this->convertResult(self::KM_TO_YARD_CONVERTER);
+    }
+
+    protected function convertResult($type) {
         $result = $this->getDistanceInKM();
         if ($result > -1) {
-            return ($result * self::KM_TO_YARD_CONVERTER);
+            return ($result * $type);
         }
         return $result;
     }
-
-
 }
