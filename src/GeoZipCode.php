@@ -23,3 +23,4 @@ class GeoZipCode {
         return $this->zipcode;
     }
 }
+
