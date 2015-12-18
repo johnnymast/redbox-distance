@@ -136,9 +136,9 @@ class CalculateDistance {
         $request_string = '';
         $cnt = 0;
         foreach($data as $key => $val) {
-            if ($cnt > 0)
-                $request_string .='&';
-
+            if ($cnt > 0) {
+                $request_string .= '&';
+            }
             $request_string .= $key.'='.$val;
             $cnt++;
         }
@@ -167,9 +167,7 @@ class CalculateDistance {
         if( is_null($route) === FALSE) {
             if(isset($route->distance->value)){
                 return round($route->distance->value/1000,2);
-            }
-            else
-            {
+            } else {
                 return -1;
             }
         } else {

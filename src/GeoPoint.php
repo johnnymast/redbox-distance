@@ -35,7 +35,7 @@ class GeoPoint {
      * @param string $lat
      * @param string $long
      */
-    public function __construct($lat="", $long="") {
+    public function __construct($lat = "", $long = "") {
         $this->lat  = $lat;
         $this->long = $long;
     }

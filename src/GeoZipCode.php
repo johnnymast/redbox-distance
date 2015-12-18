@@ -11,7 +11,7 @@ class GeoZipCode {
     /**
      * @param string $zipcode
      */
-    public function __construct($zipcode="") {
+    public function __construct($zipcode = "") {
         $this->zipcode  = $zipcode;
     }
 

@@ -40,11 +40,13 @@ You need the curl extention to communicate with the Google Maps API Servers.
 
 Lets calculate the distance between Amsterdam and Rotterdam (Netherlands) using GeoLocations:
 
-    $p1 = new DistanceTools\GeoPoint(52.364533, 4.820374); /* Amsterdam */
-    $p2 = new DistanceTools\GeoPoint(51.925538, 4.471867); /* Rotterdam */
+    use Redbox\Distance;
+    
+    $p1 = new Distance\GeoPoint(52.364533, 4.820374); /* Amsterdam */
+    $p2 = new Distance\GeoPoint(51.925538, 4.471867); /* Rotterdam */
 
 
-    $tool = new CalculateDistance();
+    $tool = new Distance\CalculateDistance();
     $distance = $tool->setSource($p1)
                      ->setDestination($p2)
                      ->setUseSslVerifier(false)
@@ -55,11 +57,13 @@ Lets calculate the distance between Amsterdam and Rotterdam (Netherlands) using 
 
 Calculate the distance between Den Helder and Haarlem (Netherlands) using posalcodes:
 
-    $p1 = new DistanceTools\GeoZipCode('1781 GC'); /* Den Helder */
-    $p2 = new DistanceTools\GeoZipCode("2011 SR"); /* Haarlem */
+    use Redbox\Distance;
+    
+    $p1 = new Distance\GeoZipCode('1781 GC'); /* Den Helder */
+    $p2 = new Distance\GeoZipCode("2011 SR"); /* Haarlem */
 
 
-    $tool = new CalculateDistance();
+    $tool = new Distance\CalculateDistance();
     $distance = $tool->setSource($p1)
                      ->setDestination($p2)
                      ->setUseSslVerifier(false)
