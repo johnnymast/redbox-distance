@@ -7,11 +7,13 @@ class CalculateDistance {
     const KM_TO_MILES_CONVERTER       = 0.62137;
     const KM_TO_YARD_CONVERTER        = 1093.6133;
     const CURRENT_VERSION             = '1.0';
-    protected $source                = '';
-    protected $destination           = '';
-    protected $googleAPIkey          = '';
-    protected $urlOptions            = [];
-    protected $disable_ssl_verifier  = true;
+    const USER_AGENT                  = 'Calculate Distance V';
+
+    protected $source                 = '';
+    protected $destination            = '';
+    protected $googleAPIkey           = '';
+    protected $urlOptions             = [];
+    protected $disable_ssl_verifier   = true;
 
     /**
      * CalculateDistance constructor.
@@ -58,16 +60,6 @@ class CalculateDistance {
     }
 
     /**
-     * @param $destination
-     * @return $this
-     */
-    public function setDestination($destination)
-    {
-        $this->destination = $destination;
-        return $this;
-    }
-
-    /**
      * @return string
      */
     public function getDestination()
@@ -94,7 +86,7 @@ class CalculateDistance {
     /**
      * @return string
      */
-    public function getSource()
+    private function getSource()
     {
         return $this->source;
     }
@@ -102,7 +94,7 @@ class CalculateDistance {
     /**
      * @return array
      */
-    public function getUrlOptions()
+    private function getUrlOptions()
     {
         return $this->urlOptions;
     }
@@ -116,7 +108,7 @@ class CalculateDistance {
         curl_setopt_array($curl, array(
             CURLOPT_RETURNTRANSFER => 1,
             CURLOPT_URL => $url,
-            CURLOPT_USERAGENT => 'Calculate Distance V'.self::CURRENT_VERSION,
+            CURLOPT_USERAGENT => self::USER_AGENT.self::CURRENT_VERSION,
         ));
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, $this->useSslVerifier());
         $resp = curl_exec($curl);
@@ -182,7 +174,6 @@ class CalculateDistance {
         return $this->convertResult(self::KM_TO_MILES_CONVERTER);
     }
 
-
     /**
      * @return float|int
      */
@@ -194,7 +185,7 @@ class CalculateDistance {
      * @param $type
      * @return float|int
      */
-    protected function convertResult($type) {
+    private function convertResult($type) {
         $result = $this->getDistanceInKM();
         if ($result > -1) {
             return ($result * $type);
