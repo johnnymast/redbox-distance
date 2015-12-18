@@ -21,7 +21,7 @@ Use the following command to install this package with composer
 Run the Composer command to install the latest stable version of CalculateDistance:
 
 ```bash
-composer.phar require johnnymast/calculate-distance
+composer require johnnymast/calculate-distance
 ```
 
 After installing, you need to require Composer's autoloader:
