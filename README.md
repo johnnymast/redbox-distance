@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/johnnymast/redbox-distance.svg?branch=master)](https://travis-ci.org/johnnymast/redbox-distance) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/johnnymast/redbox-distance/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/johnnymast/redbox-distance/?branch=master)
+[![Build Status](https://travis-ci.org/johnnymast/redbox-distance.svg?branch=master)](https://travis-ci.org/johnnymast/redbox-distance) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/johnnymast/redbox-distance/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/johnnymast/redbox-distance/?branch=master) [![Code Coverage](https://scrutinizer-ci.com/g/johnnymast/redbox-distance/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/johnnymast/redbox-distance/?branch=master)
 
 # Redbox-distance
 
