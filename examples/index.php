@@ -1,8 +1,6 @@
 <?php
-require 'vendor/autoload.php';
+require '../vendor/autoload.php';
 use Redbox\Distance;
-
-
 
 $p1 = new Distance\GeoPoint(52.364533, 4.820374); /* Amsterdam */
 $p2 = new Distance\GeoPoint(51.925538, 4.471867); /* Rotterdam */
@@ -28,5 +26,3 @@ $distance = $tool->setSource($p1)
 
 echo "<h2>Example 2</h2><br>";
 echo 'The calculated distance is: '.$distance.' KM';
-
-?>

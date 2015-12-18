@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/johnnymast/redbox-distance.svg?branch=master)](https://travis-ci.org/johnnymast/redbox-distance) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/johnnymast/redbox-distance/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/johnnymast/redbox-distance/?branch=master)
+
 # Redbox-distance
 
 This set of classes allow you to calculate the distance between 2 Geo Locations or zipcodes. This information comes from the Google Maps API.
@@ -112,4 +114,4 @@ you could consider sending me an e-mail.
 
 CalculateDistance is released under the MIT public license.
 
-<https://github.com/johnnymast/CalculateDistance/blob/master/LICENSE.txt>
+<https://github.com/johnnymast/redbox-distance/blob/master/LICENSE>
