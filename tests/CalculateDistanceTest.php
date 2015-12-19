@@ -58,5 +58,4 @@ class CalculateDistanceTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($distance, 76552.931);
     }
-
 }

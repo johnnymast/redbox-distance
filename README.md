@@ -33,7 +33,12 @@ require 'vendor/autoload.php';
 
 ### System Requirements
 
-You need the curl extention to communicate with the Google Maps API Servers.
+There are only a few requirments to this package.
+
+* Curl
+* PHP >= 5.40
+
+Dit will also require **PHPUnit** 4.6 but that will be installed upon installing the package using composer. 
 
 
 ### Examples

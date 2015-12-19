@@ -72,7 +72,7 @@ class CalculateDistance {
     /**
      * @return string
      */
-    public function getDestination()
+    private function getDestination()
     {
         return $this->destination;
     }
