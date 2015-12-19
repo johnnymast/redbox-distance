@@ -33,7 +33,7 @@ require 'vendor/autoload.php';
 
 ### System Requirements
 
-There are only a few requirments to this package.
+This package only requires the following:
 
 * Curl
 * PHP >= 5.40
