@@ -15,7 +15,7 @@ This set of classes allow you to calculate the distance between Geo Locations or
 
 ### Installing via Composer
 
-Use the composer command to install this package [Composer](http://getcomposer.org).
+Use the [composer](http://getcomposer.org) command to install this package.  
 
 Run the Composer command to install the latest stable version of CalculateDistance:
 
