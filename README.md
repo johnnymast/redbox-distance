@@ -2,7 +2,7 @@
 
 # Redbox-distance
 
-This set of classes allow you to calculate the distance between 2 Geo Locations or zipcodes. This information comes from the Google Maps API.
+This set of classes allow you to calculate the distance between Geo Locations or zipcodes. The information comes from the Google Maps API.
 
 ## Features
 
@@ -15,8 +15,7 @@ This set of classes allow you to calculate the distance between 2 Geo Locations 
 
 ### Installing via Composer
 
-Use the following command to install this package with composer
-[Composer](http://getcomposer.org).
+Use the composer command to install this package [Composer](http://getcomposer.org).
 
 Run the Composer command to install the latest stable version of CalculateDistance:
 
