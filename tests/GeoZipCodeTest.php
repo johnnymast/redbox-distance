@@ -14,7 +14,6 @@ class GeoZipCode extends \PHPUnit_Framework_TestCase
      */
     public function test_tostring_returns_the_constructed_zipcode() {
         $GeoZip = new Distance\GeoZipCode('CA 94105');
-        $this->assertEquals($Gels
-        oZip, 'CA 94105');
+        $this->assertEquals($GelsoZip, 'CA 94105');
     }
 }
