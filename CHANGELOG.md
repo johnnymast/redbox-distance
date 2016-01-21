@@ -4,6 +4,7 @@
 - Added more comments to methods
 - Added a contact author badge
 - Added a badge bragging about HHVM support
+- Updated the package description for https://packagist.org/
 
 
 ## 1.1 - 2015-19-12
