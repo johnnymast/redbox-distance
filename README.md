@@ -6,6 +6,9 @@ This set of classes allow you to calculate the distance between Geo Locations or
 
 ## Features
 
+
+
+
 * Calculate the distance in
     * Kilometers
     * Miles
