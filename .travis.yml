@@ -10,7 +10,7 @@ php:
 
 env:
   - COMPOSER_OPTS=""
-#  - COMPOSER_OPTS="--prefer-lowest"
+  - COMPOSER_OPTS="--prefer-lowest"
 
 before_install:
   - php /home/travis/.phpenv/versions/hhvm/bin/composer self-update

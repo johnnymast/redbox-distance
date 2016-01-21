@@ -191,6 +191,8 @@ class CalculateDistance
     }
 
     /**
+     * Return the distance calculated to Miles.
+     *
      * @return float|int
      */
     public function getDistanceInMiles()
@@ -199,6 +201,8 @@ class CalculateDistance
     }
 
     /**
+     * Return the distance calculated to Yards.
+     *
      * @return float|int
      */
     public function getDistanceInYards()
@@ -207,6 +211,8 @@ class CalculateDistance
     }
 
     /**
+     * This function will do the sum and calculate the distance correctly.
+     *
      * @param $type
      * @return float|int
      */
