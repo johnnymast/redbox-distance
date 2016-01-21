@@ -16,7 +16,7 @@ before_install:
   - php /home/travis/.phpenv/versions/hhvm/bin/composer self-update
 
 before_script:
-  - composer update
+  - composer install
 
 script:
   - if [ "$TRAVIS_PHP_VERSION" == 7 ]; then vendor/bin/phpunit; fi
