@@ -1,3 +1,11 @@
+## 1.2
+
+- Added a bunch more tests hoping to score 100% converage
+- Added more comments to methods
+- Added a contact author badge
+- Added a badge bragging about HHVM support
+
+
 ## 1.1 - 2015-19-12
 
 Added the version 1.1 release. This version cleaned up the changelog.md nothing more. Its also because of people don't

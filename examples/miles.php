@@ -1,5 +1,5 @@
 <?php
-require '../vendor/autoload.php';
+require 'autoload.php';
 use Redbox\Distance;
 
 $p1 = new Distance\GeoPoint(52.364533, 4.820374); /* Amsterdam */

@@ -1,13 +1,14 @@
-[![Build Status](https://travis-ci.org/johnnymast/redbox-distance.svg?branch=master)](https://travis-ci.org/johnnymast/redbox-distance) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/johnnymast/redbox-distance/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/johnnymast/redbox-distance/?branch=master) [![Code Coverage](https://scrutinizer-ci.com/g/johnnymast/redbox-distance/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/johnnymast/redbox-distance/?branch=master)
+[![Build Status](https://travis-ci.org/johnnymast/redbox-distance.svg?branch=master)](https://travis-ci.org/johnnymast/redbox-distance) 
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/johnnymast/redbox-distance/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/johnnymast/redbox-distance/?branch=master) 
+[![Code Coverage](https://scrutinizer-ci.com/g/johnnymast/redbox-distance/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/johnnymast/redbox-distance/?branch=master)
+[![GitHub stars](https://img.shields.io/badge/HHVM-Ready-green.svg)](http://hhvm.com/)
+[![Twitter URL](https://img.shields.io/twitter/url/http/shields.io.svg?style=social&label=Contact author)](https://twitter.com/intent/tweet?text=@mastjohnny)
 
 # Redbox-distance
 
 This set of classes allow you to calculate the distance between Geo Locations or zipcodes. The information comes from the Google Maps API.
 
 ## Features
-
-
-
 
 * Calculate the distance in
     * Kilometers
