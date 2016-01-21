@@ -1,7 +1,8 @@
 <?php
 namespace Redbox\Distance;
 
-class GeoPoint {
+class GeoPoint
+{
     /**
      * @var string
      */
@@ -35,7 +36,8 @@ class GeoPoint {
      * @param string $lat
      * @param string $long
      */
-    public function __construct($lat = "", $long = "") {
+    public function __construct($lat = "", $long = "")
+    {
         $this->lat  = $lat;
         $this->long = $long;
     }
@@ -44,7 +46,8 @@ class GeoPoint {
      * Return the GeoPoint as string
      * @return string
      */
-    public function __toString() {
+    public function __toString()
+    {
         return $this->lat.','.$this->long;
     }
 }

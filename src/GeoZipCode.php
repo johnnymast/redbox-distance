@@ -1,7 +1,8 @@
 <?php
 namespace Redbox\Distance;
 
-class GeoZipCode {
+class GeoZipCode
+{
 
     /**
      * @var string
@@ -11,7 +12,8 @@ class GeoZipCode {
     /**
      * @param string $zipcode
      */
-    public function __construct($zipcode = "") {
+    public function __construct($zipcode = "")
+    {
         $this->zipcode  = $zipcode;
     }
 
@@ -19,7 +21,8 @@ class GeoZipCode {
      * This function returns the postal code as string
      * @return string
      */
-    public function __toString() {
+    public function __toString()
+    {
         return $this->zipcode;
     }
 }

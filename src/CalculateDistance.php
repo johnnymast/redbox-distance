@@ -1,7 +1,8 @@
 <?php
 namespace Redbox\Distance;
 
-class CalculateDistance {
+class CalculateDistance
+{
 
     const MAPS_DISTANCE_MATRIX_API_URL = 'https://maps.googleapis.com/maps/api/distancematrix/json';
     const KM_TO_MILES_CONVERTER       = 0.62137;
@@ -14,6 +15,7 @@ class CalculateDistance {
     protected $googleAPIkey           = '';
     protected $urlOptions             = [];
     protected $disable_ssl_verifier   = true;
+    protected $api_url                = '';
 
     /**
      * CalculateDistance constructor.
@@ -27,6 +29,17 @@ class CalculateDistance {
             'sensor'        => 'false',
             'key'           => '',
         );
+        $this->setApiUrl(self::MAPS_DISTANCE_MATRIX_API_URL);
+    }
+
+    /**
+     * @param string $api_url
+     * @return $this
+     */
+    public function setApiUrl($api_url)
+    {
+        $this->api_url = $api_url;
+        return $this;
     }
 
     /**
@@ -80,9 +93,9 @@ class CalculateDistance {
     /**
      * @return string
      */
-    private function getGoogleAPIkey()
+    public function getApiUrl()
     {
-        return $this->googleAPIkey;
+        return $this->api_url;
     }
 
     /**
@@ -113,7 +126,8 @@ class CalculateDistance {
      * @param string $url
      * @return mixed
      */
-    private function requestData($url="") {
+    private function requestData($url="")
+    {
         $curl = curl_init();
         curl_setopt_array($curl, array(
             CURLOPT_RETURNTRANSFER => 1,
@@ -128,12 +142,13 @@ class CalculateDistance {
     /**
      * @return mixed|null
      */
-    private function calculateDistance() {
+    private function calculateDistance()
+    {
 
-        $data = $this->getUrlOptions();
+        $data                 = $this->getUrlOptions();
         $data['origins']      = urlencode($this->getSource());
         $data['destinations'] = urlencode($this->getDestination());
-        $data['key']          = $this->getGoogleAPIkey();
+        $data['key']          = $this->googleAPIkey;
 
         $request_string = '';
         $cnt = 0;
@@ -145,7 +160,7 @@ class CalculateDistance {
             $cnt++;
         }
 
-        $url = self::MAPS_DISTANCE_MATRIX_API_URL.'?' . $request_string;
+        $url = $this->getApiUrl().'?' . $request_string;
         $response = $this->requestData($url);
 
         $response = utf8_encode($response);
@@ -164,30 +179,30 @@ class CalculateDistance {
     /**
      * @return float|int
      */
-    public function getDistanceInKM() {
+    public function getDistanceInKM()
+    {
         $route = $this->calculateDistance();
         if( is_null($route) === FALSE) {
             if(isset($route->distance->value)){
                 return round($route->distance->value/1000);
-            } else {
-                return -1;
             }
-        } else {
-            return -1;
         }
+        return -1;
     }
 
     /**
      * @return float|int
      */
-    public function getDistanceInMiles() {
+    public function getDistanceInMiles()
+    {
         return $this->convertResult(self::KM_TO_MILES_CONVERTER);
     }
 
     /**
      * @return float|int
      */
-    public function getDistanceInYards() {
+    public function getDistanceInYards()
+    {
         return $this->convertResult(self::KM_TO_YARD_CONVERTER);
     }
 
@@ -195,7 +210,8 @@ class CalculateDistance {
      * @param $type
      * @return float|int
      */
-    private function convertResult($type) {
+    private function convertResult($type)
+    {
         $result = $this->getDistanceInKM();
         if ($result > -1) {
             return ($result * $type);
