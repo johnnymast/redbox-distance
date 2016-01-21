@@ -20,9 +20,8 @@ checks:
         fix_doc_comments: true
 tools:
     external_code_coverage:
-        enabled: false
         timeout: 1800
-        runs: 4
+        runs: 2
     php_code_coverage: false
     php_code_sniffer:
         config:
