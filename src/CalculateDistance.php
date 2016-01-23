@@ -33,6 +33,8 @@ class CalculateDistance
     }
 
     /**
+     * Set the ApiUrl
+     *
      * @param string $api_url
      * @return $this
      */
@@ -43,6 +45,9 @@ class CalculateDistance
     }
 
     /**
+     * This is not required as the documentation states but if it becomes required
+     * you can set it with this function.
+     *
      * @param $googleAPIkey
      * @return $this
      */
@@ -53,6 +58,8 @@ class CalculateDistance
     }
 
     /**
+     * Should we use SSL Verifier (Curl) yes or no.
+     *
      * @param $disable_ssl_verifier
      * @return $this
      */
@@ -63,6 +70,8 @@ class CalculateDistance
     }
 
     /**
+     * Set the destination.
+     *
      * @param string $destination
      * @return $this
      */
@@ -73,6 +82,8 @@ class CalculateDistance
     }
 
     /**
+     * Set the source.
+     *
      * @param $source
      * @return $this
      */
@@ -83,6 +94,8 @@ class CalculateDistance
     }
 
     /**
+     * Return the destination.
+     *
      * @return string
      */
     private function getDestination()
@@ -91,6 +104,8 @@ class CalculateDistance
     }
 
     /**
+     * Get the API Url.
+     *
      * @return string
      */
     public function getApiUrl()
@@ -99,6 +114,8 @@ class CalculateDistance
     }
 
     /**
+     * Are we using SSL verifier?
+     *
      * @return bool
      */
     private function useSslVerifier()
@@ -107,6 +124,8 @@ class CalculateDistance
     }
 
     /**
+     * Return the source.
+     *
      * @return string
      */
     private function getSource()
@@ -115,6 +134,8 @@ class CalculateDistance
     }
 
     /**
+     * Return the url options.
+     *
      * @return array
      */
     private function getUrlOptions()
@@ -123,6 +144,8 @@ class CalculateDistance
     }
 
     /**
+     * Execute the request to Google Services.
+     *
      * @param string $url
      * @return mixed
      */
@@ -140,6 +163,8 @@ class CalculateDistance
     }
 
     /**
+     * Query the distance from Google Services.
+     *
      * @return mixed|null
      */
     private function calculateDistance()
@@ -177,6 +202,8 @@ class CalculateDistance
     }
 
     /**
+     * Return the distance calculated to Kilometers.
+     *
      * @return float|int
      */
     public function getDistanceInKM()
