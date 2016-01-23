@@ -22,7 +22,7 @@ This set of classes allow you to calculate the distance between Geo Locations or
 Use [composer](http://getcomposer.org) to install this package. Run the Composer command to install the latest stable version of Redbox-distance:
 
 ```bash
-composer require johnnymast/calculate-distance
+composer require redbox/distance
 ```
 
 After installing, you need to require Composer's autoloader:
