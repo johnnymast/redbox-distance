@@ -1,14 +1,15 @@
 {
   "name": "redbox/distance",
-  "description": "",
-  "keywords": [],
+  "description": "This package allows you to calculate the distance between 2 locations in the world using the Google Maps API ",
+  "keywords": ["Distance", "Metrics", "Google Maps", "KM", "Miles", "Yards", "Maps", "Location", "Geo", "Zipcodes" ],
+  "type": "library",
   "license": "MIT",
   "authors": [
     {
       "name": "Johnny Mast",
       "email": "mastjohnny@gmail.com",
       "homepage": "https://github.com/johnnymast",
-      "role": "Developer"
+      "role": "lead"
     }
   ],
   "require": {

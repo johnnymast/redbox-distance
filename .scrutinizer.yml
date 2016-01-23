@@ -21,7 +21,7 @@ checks:
 tools:
     external_code_coverage:
         timeout: 1800
-        runs: 4
+        runs: 2
     php_code_coverage: false
     php_code_sniffer:
         config:
@@ -32,5 +32,5 @@ tools:
         enabled: true
         excluded_dirs: [vendor, tests]
     php_cpd:
-        enabled: true
+        enabled: false
         excluded_dirs: [vendor, tests]

@@ -1,8 +1,8 @@
 <?php
 namespace Redbox\Distance;
 
-class CalculateDistance {
-
+class CalculateDistance
+{
     const MAPS_DISTANCE_MATRIX_API_URL = 'https://maps.googleapis.com/maps/api/distancematrix/json';
     const KM_TO_MILES_CONVERTER       = 0.62137;
     const KM_TO_YARD_CONVERTER        = 1093.6133;
@@ -14,6 +14,7 @@ class CalculateDistance {
     protected $googleAPIkey           = '';
     protected $urlOptions             = [];
     protected $disable_ssl_verifier   = true;
+    protected $api_url                = '';
 
     /**
      * CalculateDistance constructor.
@@ -27,9 +28,25 @@ class CalculateDistance {
             'sensor'        => 'false',
             'key'           => '',
         );
+        $this->setApiUrl(self::MAPS_DISTANCE_MATRIX_API_URL);
     }
 
     /**
+     * Set the ApiUrl
+     *
+     * @param string $api_url
+     * @return $this
+     */
+    public function setApiUrl($api_url)
+    {
+        $this->api_url = $api_url;
+        return $this;
+    }
+
+    /**
+     * This is not required as the documentation states but if it becomes required
+     * you can set it with this function.
+     *
      * @param $googleAPIkey
      * @return $this
      */
@@ -40,6 +57,8 @@ class CalculateDistance {
     }
 
     /**
+     * Should we use SSL Verifier (Curl) yes or no.
+     *
      * @param $disable_ssl_verifier
      * @return $this
      */
@@ -50,6 +69,8 @@ class CalculateDistance {
     }
 
     /**
+     * Set the destination.
+     *
      * @param string $destination
      * @return $this
      */
@@ -60,6 +81,8 @@ class CalculateDistance {
     }
 
     /**
+     * Set the source.
+     *
      * @param $source
      * @return $this
      */
@@ -70,6 +93,8 @@ class CalculateDistance {
     }
 
     /**
+     * Return the destination.
+     *
      * @return string
      */
     private function getDestination()
@@ -78,14 +103,18 @@ class CalculateDistance {
     }
 
     /**
+     * Get the API Url.
+     *
      * @return string
      */
-    private function getGoogleAPIkey()
+    public function getApiUrl()
     {
-        return $this->googleAPIkey;
+        return $this->api_url;
     }
 
     /**
+     * Are we using SSL verifier?
+     *
      * @return bool
      */
     private function useSslVerifier()
@@ -94,6 +123,8 @@ class CalculateDistance {
     }
 
     /**
+     * Return the source.
+     *
      * @return string
      */
     private function getSource()
@@ -102,6 +133,8 @@ class CalculateDistance {
     }
 
     /**
+     * Return the url options.
+     *
      * @return array
      */
     private function getUrlOptions()
@@ -110,10 +143,13 @@ class CalculateDistance {
     }
 
     /**
+     * Execute the request to Google Services.
+     *
      * @param string $url
      * @return mixed
      */
-    private function requestData($url="") {
+    private function requestData($url="")
+    {
         $curl = curl_init();
         curl_setopt_array($curl, array(
             CURLOPT_RETURNTRANSFER => 1,
@@ -126,76 +162,82 @@ class CalculateDistance {
     }
 
     /**
+     * Query the distance from Google Services.
+     *
      * @return mixed|null
      */
-    private function calculateDistance() {
+    private function calculateDistance()
+    {
 
-        $data = $this->getUrlOptions();
+        $data                 = $this->getUrlOptions();
         $data['origins']      = urlencode($this->getSource());
         $data['destinations'] = urlencode($this->getDestination());
-        $data['key']          = $this->getGoogleAPIkey();
+        $data['key']          = $this->googleAPIkey;
 
         $request_string = '';
         $cnt = 0;
         foreach($data as $key => $val) {
-            if ($cnt > 0) {
-                $request_string .= '&';
-            }
-            $request_string .= $key.'='.$val;
+            $request_string .= (($cnt > 0) ? '&' : ''). $key.'='.$val;
             $cnt++;
         }
 
-        $url = self::MAPS_DISTANCE_MATRIX_API_URL.'?' . $request_string;
+        $url = $this->getApiUrl().'?' . $request_string;
         $response = $this->requestData($url);
 
         $response = utf8_encode($response);
         $route = json_decode($response);
 
-        if ($route) {
-            $rows = current($route->rows);
-            if (is_null($rows) === false) {
-                $elements = current($rows->elements);
-                return $elements;
-            }
+        if ($route && ($rows = current($route->rows))) {
+            $elements = current($rows->elements);
+            return $elements;
         }
         return NULL;
     }
 
     /**
+     * Return the distance calculated to Kilometers.
+     *
      * @return float|int
      */
-    public function getDistanceInKM() {
+    public function getDistanceInKM()
+    {
         $route = $this->calculateDistance();
         if( is_null($route) === FALSE) {
             if(isset($route->distance->value)){
                 return round($route->distance->value/1000);
-            } else {
-                return -1;
             }
-        } else {
-            return -1;
         }
+        return -1;
     }
 
     /**
+     * Return the distance calculated to Miles.
+     *
      * @return float|int
      */
-    public function getDistanceInMiles() {
+    public function getDistanceInMiles()
+    {
         return $this->convertResult(self::KM_TO_MILES_CONVERTER);
     }
 
     /**
+     * Return the distance calculated to Yards.
+     *
      * @return float|int
      */
-    public function getDistanceInYards() {
+    public function getDistanceInYards()
+    {
         return $this->convertResult(self::KM_TO_YARD_CONVERTER);
     }
 
     /**
+     * This function will do the sum and calculate the distance correctly.
+     *
      * @param $type
      * @return float|int
      */
-    private function convertResult($type) {
+    private function convertResult($type)
+    {
         $result = $this->getDistanceInKM();
         if ($result > -1) {
             return ($result * $type);
