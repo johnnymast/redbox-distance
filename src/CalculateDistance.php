@@ -178,10 +178,7 @@ class CalculateDistance
         $request_string = '';
         $cnt = 0;
         foreach($data as $key => $val) {
-            if ($cnt > 0) {
-                $request_string .= '&';
-            }
-            $request_string .= $key.'='.$val;
+            $request_string .= (($cnt > 0) ? '&' : ''). $key.'='.$val;
             $cnt++;
         }
 
@@ -191,12 +188,9 @@ class CalculateDistance
         $response = utf8_encode($response);
         $route = json_decode($response);
 
-        if ($route) {
-            $rows = current($route->rows);
-            if (is_null($rows) === false) {
-                $elements = current($rows->elements);
-                return $elements;
-            }
+        if ($route && ($rows = current($route->rows))) {
+            $elements = current($rows->elements);
+            return $elements;
         }
         return NULL;
     }
