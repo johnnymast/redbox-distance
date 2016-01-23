@@ -4,7 +4,6 @@
   "keywords": ["Distance", "Metrics", "Google Maps", "KM", "Miles", "Yards", "Maps", "Location", "Geo", "Zipcodes" ],
   "type": "library",
   "license": "MIT",
-  "minimum-stability": "stable",
   "authors": [
     {
       "name": "Johnny Mast",
