@@ -2,6 +2,10 @@
 require 'autoload.php';
 use Redbox\Distance;
 
+/**
+ * In this example we will calculate the distance between Amsterdam and Rotterdam (the Netherlands)
+ * as Miles and display them to the user of the script.
+ */
 $p1 = new Distance\GeoPoint(52.364533, 4.820374); /* Amsterdam */
 $p2 = new Distance\GeoPoint(51.925538, 4.471867); /* Rotterdam */
 

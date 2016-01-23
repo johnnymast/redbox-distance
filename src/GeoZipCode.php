@@ -3,13 +3,14 @@ namespace Redbox\Distance;
 
 class GeoZipCode
 {
-
     /**
      * @var string
      */
     protected $zipcode;
 
     /**
+     * Constructor for GeoZipCode
+     *
      * @param string $zipcode
      */
     public function __construct($zipcode = "")

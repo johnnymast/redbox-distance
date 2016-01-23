@@ -3,7 +3,6 @@ namespace Redbox\Distance;
 
 class CalculateDistance
 {
-
     const MAPS_DISTANCE_MATRIX_API_URL = 'https://maps.googleapis.com/maps/api/distancematrix/json';
     const KM_TO_MILES_CONVERTER       = 0.62137;
     const KM_TO_YARD_CONVERTER        = 1093.6133;
