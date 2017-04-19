@@ -4,26 +4,56 @@ namespace Redbox\Distance;
 
 class CalculateDistance
 {
+    /**
+     * We will use this url to test our distance information from.
+     *
+     * @see \Redbox\Distance\CalculateDistance::calculateDistance()
+     */
     const MAPS_DISTANCE_MATRIX_API_URL = 'https://maps.googleapis.com/maps/api/distancematrix/json';
 
+    /**
+     *
+     */
     const KM_TO_MILES_CONVERTER = 0.62137;
 
+    /**
+     *
+     */
     const KM_TO_YARD_CONVERTER = 1093.6133;
 
-    const CURRENT_VERSION = '1.2.3';
+    /**
+     *
+     */
+    const USER_AGENT = 'Calculate Distance V1.2.3';
 
-    const USER_AGENT = 'Calculate Distance V';
-
+    /**
+     * @var string
+     */
     protected $source = '';
 
+    /**
+     * @var string
+     */
     protected $destination = '';
 
+    /**
+     * @var string
+     */
     protected $googleAPIkey = '';
 
+    /**
+     * @var array
+     */
     protected $urlOptions = [];
 
+    /**
+     * @var bool
+     */
     protected $disable_ssl_verifier = true;
 
+    /**
+     * @var string
+     */
     protected $api_url = '';
 
     /**
@@ -170,13 +200,13 @@ class CalculateDistance
         curl_setopt_array($curl, [
             CURLOPT_RETURNTRANSFER => 1,
             CURLOPT_URL => $url,
-            CURLOPT_USERAGENT => self::USER_AGENT.self::CURRENT_VERSION,
+            CURLOPT_USERAGENT => self::USER_AGENT,
         ]);
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, $this->useSslVerifier());
         $resp = curl_exec($curl);
         curl_close($curl);
 
-        return $resp;
+        return utf8_encode($resp);
     }
 
     /**
@@ -188,30 +218,21 @@ class CalculateDistance
     {
 
         $data = [
-            'origins' => urlencode($this->getSource()),
-            'destinations' => urlencode($this->getDestination()),
-            'key' => $this->googleAPIkey,
-        ] + $this->getUrlOptions();
-
-
-        //
-        //$data = $this->getUrlOptions();
-        //$data['origins'] = urlencode($this->getSource());
-        //$data['destinations'] = urlencode($this->getDestination());
-        //$data['key'] = $this->googleAPIkey;
-
+                'origins' => urlencode($this->getSource()),
+                'destinations' => urlencode($this->getDestination()),
+                'key' => $this->googleAPIkey,
+            ] + $this->getUrlOptions();
 
         $request_string = '';
         $cnt = 0;
         foreach ($data as $key => $val) {
-            $request_string .= (($cnt > 0) ? '&' : '').$key.'='.$val;
+            $request_string .= ($cnt > 0 ? '&' : '').$key.'='.$val;
             $cnt++;
         }
 
         $url = $this->getApiUrl().'?'.$request_string;
         $response = $this->requestData($url);
 
-        $response = utf8_encode($response);
         $route = json_decode($response);
 
         if ($route && ($rows = current($route->rows))) {
