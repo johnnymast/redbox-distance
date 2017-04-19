@@ -12,46 +12,59 @@ class CalculateDistance
     const MAPS_DISTANCE_MATRIX_API_URL = 'https://maps.googleapis.com/maps/api/distancematrix/json';
 
     /**
-     *
+     * Kilometer to miles conversion rate.
      */
     const KM_TO_MILES_CONVERTER = 0.62137;
 
     /**
-     *
+     * Kilometer to yards conversion rate.
      */
     const KM_TO_YARD_CONVERTER = 1093.6133;
 
     /**
-     *
+     * The useragent string we use in the curl request.
      */
     const USER_AGENT = 'Calculate Distance V1.2.3';
 
     /**
+     * The source string.
+     *
      * @var string
      */
     protected $source = '';
 
     /**
+     * The destination string.
+     *
      * @var string
      */
     protected $destination = '';
 
     /**
+     * The Google API key.
+     *
      * @var string
      */
     protected $googleAPIkey = '';
 
     /**
+     * Define the request options.
+     *
      * @var array
      */
     protected $urlOptions = [];
 
     /**
+     * Option to disable SSL verification,
+     * i would suggest enabling it.
+     *
      * @var bool
      */
     protected $disable_ssl_verifier = true;
 
     /**
+     * The API url.
+     *
      * @var string
      */
     protected $api_url = '';
